@@ -12,9 +12,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.xiaoshi2022.legendary_rick.Legendary_Rick.MOD_ID;
+
 // An example config class. This is not required, but it's a good idea to have one to keep your config organized.
 // Demonstrates how to use Forge's config APIs
-@Mod.EventBusSubscriber(modid = Legendary_Rick.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config
 {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();

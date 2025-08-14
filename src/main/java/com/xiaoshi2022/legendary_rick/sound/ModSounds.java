@@ -1,15 +1,16 @@
 package com.xiaoshi2022.legendary_rick.sound;
 
-import com.xiaoshi2022.legendary_rick.Legendary_Rick;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static com.xiaoshi2022.legendary_rick.Legendary_Rick.MOD_ID;
+
 public class ModSounds {
     public static final DeferredRegister<SoundEvent> REGISTRY = 
-            DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Legendary_Rick.MODID);
+            DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MOD_ID);
 
 
     public static final RegistryObject<SoundEvent> SHIT_KING_EAT = REGISTRY.register("shit_king_eating",

@@ -1,24 +1,16 @@
 package com.xiaoshi2022.legendary_rick;
 
 import com.mojang.logging.LogUtils;
-import com.xiaoshi2022.legendary_rick.entity.RickPortalEntity;
-import com.xiaoshi2022.legendary_rick.entity.client.Rportal.RickPortalRenderer;
+import com.xiaoshi2022.legendary_rick.block.client.Rportal.RickPortalRenderer;
+import com.xiaoshi2022.legendary_rick.register.ModBlockEntities;
+import com.xiaoshi2022.legendary_rick.register.ModBlocks;
 import com.xiaoshi2022.legendary_rick.register.ModEntities;
+import com.xiaoshi2022.legendary_rick.register.ModItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -29,24 +21,26 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(Legendary_Rick.MODID)
+@Mod(Legendary_Rick.MOD_ID)
 public class Legendary_Rick
 {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "legendary_rick";
+    public static final String MOD_ID = "legendary_rick";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public Legendary_Rick()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModItems.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -85,18 +79,21 @@ public class Legendary_Rick
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
+        public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ModBlockEntities.RICK_PORTAL.get(), RickPortalRenderer::new);
+        }
+
+        @SubscribeEvent
         public static void onEntityAttributeCreation(EntityAttributeCreationEvent event) {
-            event.put(ModEntities.RICK_PORTAL.get(), RickPortalEntity.createAttributes().build());
         }
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            EntityRenderers.register(ModEntities.RICK_PORTAL.get(), RickPortalRenderer::new);
 
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
