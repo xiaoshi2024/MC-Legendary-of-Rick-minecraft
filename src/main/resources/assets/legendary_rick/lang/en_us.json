@@ -1,0 +1,8 @@
+{
+  "item.legendary_rick.rick_portal": "Rick Portal",
+  "block.legendary_rick.rick_portal": "Rick Portal Wall",
+  "block.legendary_rick.rick_portal_floor": "Rick Portal Floor",
+  "block.legendary_rick.rick_portal_ceiling": "Rick Portal Ceiling",
+
+  "itemGroup.legendary_rick": "Rick Legendary"
+}

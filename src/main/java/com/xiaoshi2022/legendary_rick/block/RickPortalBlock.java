@@ -64,21 +64,16 @@ public class RickPortalBlock extends BaseEntityBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        Level level = ctx.getLevel();
-        BlockPos pos = ctx.getClickedPos();
         Direction face = ctx.getClickedFace();
-
-        /* 地板/天花板直接替换成变种方块 */
         if (face == Direction.UP) {
-            level.setBlock(pos, ModBlocks.RICK_PORTAL_FLOOR.get().defaultBlockState(), 3);
-            return null;
+            // 地板：直接返回变种方块状态
+            return ModBlocks.RICK_PORTAL_FLOOR.get().defaultBlockState();
         }
         if (face == Direction.DOWN) {
-            level.setBlock(pos, ModBlocks.RICK_PORTAL_CEILING.get().defaultBlockState(), 3);
-            return null;
+            // 天花板：直接返回变种方块状态
+            return ModBlocks.RICK_PORTAL_CEILING.get().defaultBlockState();
         }
-
-        /* 墙面：正常设置朝向 */
+        // 墙面：正常返回本类状态并设置朝向
         return this.defaultBlockState().setValue(FACING, face);
     }
 

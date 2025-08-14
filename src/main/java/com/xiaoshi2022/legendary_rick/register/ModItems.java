@@ -1,5 +1,6 @@
 package com.xiaoshi2022.legendary_rick.register;
 
+import com.xiaoshi2022.legendary_rick.Items.RickPortalItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -16,9 +17,9 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
     // 2. 只注册传送门方块的物品形式
-    public static final RegistryObject<Item> RICK_PORTAL_ITEM = ITEMS.register("rick_portal",
-            () -> new BlockItem(ModBlocks.RICK_PORTAL.get(),
-                    new Item.Properties()
+    public static final RegistryObject<RickPortalItem> RICK_PORTAL_ITEM =
+            ITEMS.register("rick_portal",
+                    () -> new RickPortalItem(new Item.Properties()
             ));
 
     // 3. 注册方法

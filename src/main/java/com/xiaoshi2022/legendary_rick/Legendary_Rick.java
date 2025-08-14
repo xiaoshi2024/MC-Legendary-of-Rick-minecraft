@@ -2,10 +2,7 @@ package com.xiaoshi2022.legendary_rick;
 
 import com.mojang.logging.LogUtils;
 import com.xiaoshi2022.legendary_rick.block.client.Rportal.RickPortalRenderer;
-import com.xiaoshi2022.legendary_rick.register.ModBlockEntities;
-import com.xiaoshi2022.legendary_rick.register.ModBlocks;
-import com.xiaoshi2022.legendary_rick.register.ModEntities;
-import com.xiaoshi2022.legendary_rick.register.ModItems;
+import com.xiaoshi2022.legendary_rick.register.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -37,6 +34,8 @@ public class Legendary_Rick
     public Legendary_Rick()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModCreativeModeTab.TABS.register(modEventBus);
 
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
