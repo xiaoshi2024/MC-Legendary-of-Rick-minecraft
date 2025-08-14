@@ -17,18 +17,20 @@ import net.minecraft.world.phys.BlockHitResult;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class RickPortalBlockEntity extends BlockEntity implements GeoBlockEntity {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    public static final RawAnimation IDLE = RawAnimation.begin().thenLoop("idle");
+    public static final RawAnimation SHOW = RawAnimation.begin().thenPlay("show");
 
     /* -------------------------------------------------- */
     /* 1. 运行时缓存：当前方块形态 + 对应模型                */
     public final Variant variant;
     public final GeoModel<RickPortalBlockEntity> currentModel;
+
     /* -------------------------------------------------- */
 
     public enum Variant {
@@ -61,7 +63,8 @@ public class RickPortalBlockEntity extends BlockEntity implements GeoBlockEntity
     /* GeoBlockEntity */
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 0, state -> state.setAndContinue(IDLE)));
+        controllers.add(new AnimationController<>(this, "controller", 5,
+                state -> state.setAndContinue(SHOW)));
     }
 
     @Override
