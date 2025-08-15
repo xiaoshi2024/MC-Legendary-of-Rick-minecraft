@@ -22,6 +22,7 @@ public class ModBlockEntities {
                             ModBlocks.RICK_PORTAL_FLOOR.get(),
                             ModBlocks.RICK_PORTAL_CEILING.get()
                     ).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }
