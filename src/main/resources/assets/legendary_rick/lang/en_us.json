@@ -4,5 +4,6 @@
   "block.legendary_rick.rick_portal_floor": "Rick Portal Floor",
   "block.legendary_rick.rick_portal_ceiling": "Rick Portal Ceiling",
 
+  "item.legendary_rick.rick_portal_gun": "Rick Portal Gun",
   "itemGroup.legendary_rick": "Rick Legendary"
 }

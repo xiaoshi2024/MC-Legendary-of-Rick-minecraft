@@ -30,6 +30,7 @@ public class ModCreativeModeTab {
                         ItemStack ceilingStack = new ItemStack(ModItems.RICK_PORTAL_ITEM.get());
                         ceilingStack.getOrCreateTag().putString("PortalVariant", "ceiling");
                         output.accept(ceilingStack);
+                        output.accept(ModItems.RICK_PORTAL_GUN.get());
                     })
                     .build());
 

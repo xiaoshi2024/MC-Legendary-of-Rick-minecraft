@@ -1,0 +1,63 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"fire": {
+			"animation_length": 1,
+			"bones": {
+				"RickPortalGun": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"GunButtonGroup": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, -0.1, 0],
+							"easing": "easeInOutQuart"
+						},
+						"1.0": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"PortalSaverGroup": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.5": {
+							"vector": [1.01, 1.02, 1.01],
+							"easing": "easeInCubic"
+						},
+						"1.0": {
+							"vector": [1, 1, 1],
+							"easing": "easeInQuint"
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

@@ -1,5 +1,6 @@
 package com.xiaoshi2022.legendary_rick.register;
 
+import com.xiaoshi2022.legendary_rick.Items.RickPortalGun;
 import com.xiaoshi2022.legendary_rick.Items.RickPortalItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,6 +22,10 @@ public class ModItems {
             ITEMS.register("rick_portal",
                     () -> new RickPortalItem(new Item.Properties()
             ));
+
+    // ModItems.java
+    public static final RegistryObject<RickPortalGun> RICK_PORTAL_GUN =
+            ITEMS.register("rick_portal_gun", ()-> new RickPortalGun(new Item.Properties().stacksTo(1)));
 
     // 3. 注册方法
     public static void register(IEventBus eventBus) {
